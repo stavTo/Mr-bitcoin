@@ -1,0 +1,84 @@
+.contact-filter {
+    background-color: $clr1bg;
+    text-align: center;
+
+}
+
+.contact-filter .label-selector {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contact-filter form {
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.contact-sort {
+    margin-block-start: 1em;
+    background-color: $clr1bg;
+    padding-inline-start: 12px;
+    text-align: center;
+
+    .contact-sort-from {
+        padding: 1em;
+        justify-content: center;
+
+        select {
+            background-color: $clr1;
+            width: 7em;
+            border-radius: 2em;
+            margin-inline-end: 7px;
+        }
+
+        // input[type="checkbox"] {
+        //     appearance: none;
+        //     -webkit-appearance: none;
+        //     -moz-appearance: none;
+        //     width: 20px;
+        //     height: 20px;
+        //     border: 2px solid #333;
+        //     border-radius: 4px;
+        //     outline: none;
+        //     cursor: pointer;
+        //     position: relative;
+        //     background-color: $clr1 ;
+
+        // }
+
+        // input[type="checkbox"]:checked {
+        //     &::after {
+        //         content: "✔";
+        //         position: absolute;
+        //         top: 50%;
+        //         left: 50%;
+        //         transform: translate(-50%, -50%);
+        //         font-size: 16px;
+        //         color: #fff; /* Change the color of the checkmark here */
+        //       }
+        //   }
+    }
+}
+
+
+@media (max-width: 500px) {
+    .contact-filter {
+        width: 80vw;
+
+        form {
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.5em;
+        }
+    }
+
+    .contact-sort {
+        width: 80vw;
+    }
+
+    .add-edit-btn {
+        width: 50vw;
+    }
+
+}

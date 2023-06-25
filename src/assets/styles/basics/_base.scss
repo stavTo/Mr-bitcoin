@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $title-font;
+  color: $clrTxt;
+}
+
+
+body {
+  margin: 0;
+  background-color: rgba(151, 151, 151, 0.588);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: .5em 0 .5em;
+  font-family: cursive;
+}
+
+h4 {
+  font-size: 14px;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+
+
+/* Dont stretch my Media */
+img,
+embed,
+video,
+object {
+  max-width: 100%
+}
+
+/* Simple and useful CSS Debugging Technique */
+.debug * {
+  outline: 1px solid gold
+}
+
+.stats-container {
+  width: 70%;
+  margin-inline: auto;
+  margin-block-start: 4em;
+}

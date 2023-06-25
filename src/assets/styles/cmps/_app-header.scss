@@ -1,0 +1,92 @@
+.app-header {
+    background-color: $clr1;
+    color: $clr2bg-light;
+    height: em(80px);
+    padding-inline: 4em;
+    
+    .main-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2em;
+
+        .link-container {
+            display: flex;
+            align-items: center;
+            
+            >* {
+                margin-inline-start: 2em;
+                cursor: pointer;
+            }  
+        }
+    }
+
+    form {
+        margin-block-start: 2.5em;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.username-input,
+.password-input,
+.fullname-input,
+.login-btn {
+    width: 18em;
+    margin: 0;
+    margin-block-end: 0.5em;
+}
+
+
+
+@media (min-width:500px) {
+    .burger-btn {
+        display: none;
+    }
+}
+
+
+@media (max-width:500px) {
+    .app-header {
+        color: $clr2bg-light;
+        height: em(80px);
+
+    }
+
+    .burger-btn {
+        display: block;
+        // background-color: red;
+    }
+
+    .app-nav .link-container {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        background-color: $clr1;
+        border-inline-start: 1px solid #ccc;
+        box-shadow: -6px 0px 20px 5px rgb(0 0 0 / 22%);
+        min-width: 200px;
+        transform: translateX(100%);
+        flex-direction: column;
+
+        transition: transform 0.6s;
+
+        li {
+            width: 100%;
+            border-bottom: 1px solid $clrTxt;
+            // display: flex;
+            padding-block: 0.8em;
+            text-align: center;
+            transition: background-color 0.4s;
+        }
+    }
+
+    .menu-open .link-container {
+        transform: translateX(0);
+        z-index: 20;
+
+    }
+
+
+}

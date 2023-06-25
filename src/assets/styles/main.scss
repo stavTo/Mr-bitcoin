@@ -1,0 +1,40 @@
+// @import './basics/helpers';
+
+// @import './basics/base';
+
+// #app {
+//   max-width: 1280px;
+//   margin: 0 auto;
+//   padding: 2rem;
+
+//   font-weight: normal;
+// }
+
+
+/* Setup */
+@import 'setup/variables';
+@import 'setup/typography';
+@import 'setup/mixins';
+@import 'setup/functions';
+
+/* Basics */
+@import 'basics/base';
+@import 'basics/helpers';
+@import 'basics/forms';
+@import 'basics/layout';
+
+
+// /* Views */
+
+@import "pages/contact-index";
+@import "pages/about";
+@import "pages/contact-details";
+@import "pages/contact-edit";
+
+
+// /* Cmps */
+@import 'cmps/app-header';
+@import 'cmps/user-msg';
+@import 'cmps/contact-list';
+@import 'cmps/contact-preview';
+@import 'cmps/contact-filter';

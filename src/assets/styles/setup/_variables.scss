@@ -1,0 +1,38 @@
+   // COLOR PALETTE
+
+   $clr1: #31818f;
+   /* header */
+   $clr2: #577D86;
+   /* hover btn */
+   $clr3: #6fc5ff;
+
+
+   $clr1bg: #569DAA;
+   /* bgc book preview */
+   $clr1bg-light: rgb(205, 221, 200);
+   $clr2bg: #B9EDDD;
+   /* btn , filter bgc */
+   $clr2bg-light: rgb(43, 43, 43);
+   /* header txt */
+   $clr3bg: #87CBB9;
+   $clr3bg-light: #dcf5ee;
+
+   $clrTxt: rgb(43, 43, 43);
+   /* color text */
+
+   // LAYOUT
+   $layoutPadding: 20px;
+
+   // LAYOUT BREAKPOINTS
+   $break-narrow: 1200px;
+   $break-normal: 1360px;
+   $break-wide: 1920px;
+
+   $padded-break-narrow: $break-narrow + $layoutPadding * 2;
+   $padded-break-normal: $break-normal + $layoutPadding * 2;
+   $padded-break-wide: $break-wide + $layoutPadding * 2;
+
+   $title-font: Poppins, Roboto, Rubik, sans-serif;
+
+   $header-bg-image: '/assets/img/view-toy-background.jpeg';
+   $body-bg-image: '/assets/img/background-img.avif';

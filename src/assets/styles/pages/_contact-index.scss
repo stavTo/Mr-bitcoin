@@ -1,0 +1,20 @@
+.add-edit-btn {
+    justify-self: end;
+    width: 10em;
+    margin-block: 3em;
+    justify-content: center;
+
+}
+
+@media (max-width: 500px) {
+
+    .contact-index {
+        // z-index: ;
+        align-items: center;
+
+    }
+
+    .add-edit-btn {
+        margin-inline: auto;
+    }
+}

@@ -1,0 +1,30 @@
+.contact-list {
+    padding: 15px 0 0;
+    list-style: none;
+    // display: grid;
+    // grid-template-columns:repeat(auto-fit,minmax(20em, 1fr)) ;
+    // column-gap: 1em;
+    // row-gap: 1em;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    min-width: 80vw;
+    margin-inline: auto;
+
+}
+
+.contact-list li {
+    display: flex;
+    // flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $clr1bg;
+    padding: 0.5em;
+    // width: 20em;
+}
+
+@media (max-width: 500px) {
+    .contact-list li {
+        width: 80vw;
+    }
+}

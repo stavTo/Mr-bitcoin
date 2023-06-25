@@ -1,0 +1,26 @@
+
+input:focus {
+    background-color: $clr1bg;
+    transition: background-color 1s;
+}
+
+
+.btn {
+    @include btn;
+    
+    &-dark {
+        @include btn($type: dark);
+    }
+    
+    &-light {
+        @include btn($type: light);
+    }
+}
+
+.input {
+    @include input;
+}
+
+.check-box {
+    @include checkBox($clr1 , $clr3); 
+}
