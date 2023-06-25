@@ -1,8 +1,10 @@
 <template>
-    <UserMsg />
-    <ContactFilter @filter="onSetFilterBy"/>
-    <RouterLink to="/contact/edit"><button class="btn">Add</button></RouterLink>
-    <ContactList @remove="removeContact" v-if="contacts" :contacts="filteredContacts"/>
+    <section class="contact-index main-layout">
+        <UserMsg />
+        <ContactFilter @filter="onSetFilterBy" />
+        <RouterLink to="/contact/edit"><button class="btn">Add contact</button></RouterLink>
+        <ContactList @remove="removeContact" v-if="contacts" :contacts="filteredContacts" />
+    </section>
 </template>
 
 <script>
@@ -17,7 +19,7 @@ export default {
     data() {
         return {
             contacts: null,
-            filterBy: {},
+            filterBy: {}
         }
     },
     methods: {
@@ -43,8 +45,10 @@ export default {
     computed: {
         filteredContacts() {
             const regex = new RegExp(this.filterBy.txt, 'i')
-            return this.contacts.filter(contact => regex.test(contact.name))
-        }
+            let contacts = this.contacts.filter(contact => regex.test(contact.name))
+            return contactService.sort(contacts, this.filterBy.sort)
+        },
+
     },
     async created() {
         this.contacts = await contactService.query()
@@ -57,6 +61,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

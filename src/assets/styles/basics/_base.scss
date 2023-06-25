@@ -4,13 +4,14 @@
 
 html {
   font-family: $title-font;
+  font-weight: 500;
   color: $clrTxt;
 }
 
 
 body {
   margin: 0;
-  background-color: rgba(151, 151, 151, 0.588);
+  background-color: rgb(11, 14, 17);
 }
 
 h1,

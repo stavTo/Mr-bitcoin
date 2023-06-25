@@ -2,7 +2,6 @@
 
 import AppHeader from '@/cmps/AppHeader.vue'
 import AppFooter from '@/cmps/AppFooter.vue'
-import BarChart from './cmps/BarChart.vue'
 
 export default {
     components: {

@@ -4,21 +4,16 @@
     padding: 12px;
 
     form {
-        border: 2px solid $clr2;
+        border: 2px solid $clr1;
         padding: 15px;
+
+        >* {
+            width: 300px;
+            margin-block-end: 1em;
+        
+        }
+        > input {
+            margin-block-end: 3em;
+        }
     }
-}
-
-.contact-edit-form>* {
-    width: 300px;
-    margin-block-end: 1em;
-
-}
-
-.contact-edit-form .description {
-    height: 100px;
-}
-
-.selected {
-    color: $clr1;
 }

@@ -24,7 +24,7 @@ export default {
       datasets: [
         {
           label: 'Market Price History',
-          backgroundColor: 'lightsalmon',
+          backgroundColor: '#fcd535',
           data: []
         }
       ],

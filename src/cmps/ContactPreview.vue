@@ -1,10 +1,9 @@
 <template>
-    <article class="contact-preview flex">
+    <section class="contact-preview">
         <h4>{{ contact.name }}</h4>
-    </article>
-    <article class="contact-preview flex">
         <h4>{{ contact.phone }}</h4>
-    </article>
+        <img :src="contact.imgUrl" alt="">
+    </section>
 </template>
 
 <script>

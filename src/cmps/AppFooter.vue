@@ -1,5 +1,5 @@
 <template>
-    <footer class="app-footer">
+    <footer class="app-footer main-layout full">
         <p>Coffeerights 2023</p>
     </footer>
 </template>
