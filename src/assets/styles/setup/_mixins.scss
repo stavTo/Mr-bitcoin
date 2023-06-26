@@ -70,13 +70,12 @@
 
 @mixin btn($type: regular, $bg: $clr1, $clr: $clr3, $padding: em(20px) em(40px), $hover: darken($bg, 8%)) {
   text-decoration: none;
-  // text-transform: uppercase;
   border-radius: 2em;
   padding: $padding;
-  line-height: 1.25;
-  font-size: em(10px);
+  font-size: rem(11px);
+  font-weight: 500;
+  font-family: $title-font;
   margin: .3rem;
-  font-variation-settings: "wght" 430;
   border: none;
   cursor: pointer;
 
@@ -118,19 +117,23 @@
   font-size: rem(16px);
   border-width: 1px;
   border-color: $clr1;
-  background-color: $clr1;
-  color: $clrTxt;
+  // background-color: $clr1;
+  color: $clr3;
   border-style: solid;
-  border-radius: 2em;
+  border-radius: 4px;
   box-shadow: 0px 0px 4px rgba(66, 66, 66, .46);
   text-shadow: -50px 0px 0px rgba(66, 66, 66, .0);
+  padding: 4px 8px;
+  height: 30px;
+
 
   &::placeholder {
-    color: $clrTxt;
+    color: $clr3;
   }
-
+  
   &:focus {
     outline: none;
+    color: $clr1;
   }
 }
 

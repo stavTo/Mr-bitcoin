@@ -2,14 +2,34 @@ import { utilService } from './util.service.js'
 import { storageService } from './async-storage.service.js'
 
 const STORAGE_KEY = 'usersDB'
-
-_createUsers()
-
+const STORAGE_KEY_LOGGEDIN = 'loggedinUser'
 
 export const userService = {
     get,
     save,
     getEmptyUser,
+    loginSignUp,
+    logout,
+    getLoggedinUser,
+    transferBitcoin
+}
+
+async function loginSignUp(username) {
+    try {
+        const users = await storageService.query(STORAGE_KEY)
+        const user = users.find(user => user.username === username)
+        if (user) return _setLoggedinUser(user)
+
+        const newUser = await storageService.post(STORAGE_KEY, getEmptyUser(username))
+        return _setLoggedinUser(newUser)
+
+    } catch (err) {
+        console.log('err', err)
+    }
+}
+
+async function logout() {
+    return sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN)
 }
 
 function get(userId) {
@@ -24,30 +44,35 @@ function save(user) {
     }
 }
 
-function getEmptyUser(name = '', balance = 50, transactions = []) {
+function getEmptyUser(username = '', balance = 100, transactions = []) {
     return {
         _id: '',
-        name,
+        username,
         balance,
         transactions
     }
 }
 
-
-function _createUsers() {
-    let users = utilService.loadFromStorage(STORAGE_KEY)
-    if (!users || !users.length) {
-        users = []
-        users.push(_createUser('Roni'))
-        users.push(_createUser('Stav'))
-        users.push(_createUser('Bido'))
-        users.push(_createUser('Shaul'))
-        utilService.saveToStorage(STORAGE_KEY, users)
-    }
+function getLoggedinUser() {
+    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN))
 }
 
-function _createUser(name) {
-    const user = getEmptyUser(name)
-    user._id = utilService.makeId()
-    return user
+function _setLoggedinUser({ _id, username, balance, transactions }) {
+    const userToSave = {
+        _id,
+        username,
+        balance,
+        transactions
+    }
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(userToSave))
+    return userToSave
+}
+
+function transferBitcoin(transaction) {
+    transaction.at = new Date(transaction.at).toLocaleDateString()
+    const user = getLoggedinUser()
+    user.balance -= transaction.amount
+    user.transactions.push(transaction)
+    _setLoggedinUser(user)
+    save(user)
 }

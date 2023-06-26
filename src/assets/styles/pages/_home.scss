@@ -1,0 +1,53 @@
+.home-page {
+    .transaction-list-container {
+        position: absolute;
+        top: 170px;
+        right: 0px;
+        margin-inline-end: 20px;
+    }
+    
+    .main-title {
+        position: absolute;
+        line-height: 2;
+        margin-block-start: 1.4em;
+        font-size: rem(42px);
+        font-weight: 600;
+        font-family: cursive;
+        width: em(152px);
+        margin-inline-start: 20px;
+    }
+    .rate {
+        position: absolute;
+        top: 100px;
+        right: 20px;
+        font-family: cursive;
+    }
+    img {
+        width: 100%;
+        height: 70vh;
+        margin-block-end: 1.4em;
+
+    }
+
+    .details-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+        .item {
+            display: flex;
+            flex-direction: column;
+            padding: 16px 8px;
+            margin-inline-end: 20px;
+            width: 300px;
+            align-items: center;
+            .title {
+                font-size: rem(24px);
+            }
+            .subtitle {
+                font-size: rem(12px);
+
+            }
+        }
+    }
+}

@@ -1,10 +1,8 @@
-.add-edit-btn {
-    justify-self: end;
-    width: 10em;
-    margin-block: 3em;
-    justify-content: center;
 
-}
+    .add-edit-btn {
+        justify-self: end;
+    }
+
 
 @media (max-width: 500px) {
 
@@ -16,5 +14,6 @@
 
     .add-edit-btn {
         margin-inline: auto;
+        margin-block-start: 1em;
     }
 }

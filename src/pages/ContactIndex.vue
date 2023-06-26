@@ -2,14 +2,15 @@
     <section class="contact-index main-layout">
         <UserMsg />
         <ContactFilter @filter="onSetFilterBy" />
-        <RouterLink to="/contact/edit"><button class="btn">Add contact</button></RouterLink>
-        <ContactList @remove="removeContact" v-if="contacts" :contacts="filteredContacts" />
+        <RouterLink to="/contact/edit" class="add-edit-btn"><button class="btn add-edit-btn">Add contact +</button>
+        </RouterLink>
+        <ContactList @remove="removeContact" v-if="contacts" :contacts="filteredSortedContacts" />
     </section>
 </template>
 
 <script>
 import { contactService } from '@/services/contact.service.js'
-import { eventBus } from '@/services/eventBus.service.js'
+import { showSuccessMsg, showErrorMsg } from '../services/eventBus.service.js'
 
 import ContactList from '@/cmps/ContactList.vue'
 import ContactFilter from '@/cmps/ContactFilter.vue'
@@ -18,40 +19,38 @@ import UserMsg from '@/cmps/UserMsg.vue'
 export default {
     data() {
         return {
-            contacts: null,
             filterBy: {}
         }
     },
     methods: {
         async removeContact(contactId) {
-            const msg = {
-                txt: `Contact ${contactId} removed...`,
-                type: 'success',
-                timeout: 2500,
+            try {
+                this.$store.dispatch({ type: 'removeContact', contactId })
+                showSuccessMsg('Contact removed')
+            } catch (err) {
+                showErrorMsg('Cannot remove contact')
             }
-            await contactService.remove(contactId)
-
-            const idx = this.contacts.findIndex(contact => contact._id === contactId)
-            this.contacts.splice(idx, 1)
-
-            // Implement a filter removal
-
-            eventBus.emit('user-msg', msg)
         },
         onSetFilterBy(filterBy) {
             this.filterBy = filterBy
         }
     },
     computed: {
-        filteredContacts() {
-            const regex = new RegExp(this.filterBy.txt, 'i')
-            let contacts = this.contacts.filter(contact => regex.test(contact.name))
-            return contactService.sort(contacts, this.filterBy.sort)
+        filteredSortedContacts() {
+            let contacts = this.contacts.slice()
+            if (this.filterBy.txt) {
+                const regex = new RegExp(this.filterBy.txt, 'i')
+                contacts = contacts.filter(contact => regex.test(contact.name))
+            }
+            if (this.filterBy.sort) {
+                contactService.sort(contacts, this.filterBy.sort)
+            }
+            return contacts
         },
-
+        contacts() { return this.$store.getters.contacts }
     },
     async created() {
-        this.contacts = await contactService.query()
+        this.$store.dispatch({ type: 'loadContacts' })
     },
     components: {
         ContactList,

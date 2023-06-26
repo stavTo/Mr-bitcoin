@@ -1,36 +1,18 @@
 .contact-filter {
     background-color: $clr1bg;
     text-align: center;
-
-}
-
-.contact-filter .label-selector {
     display: flex;
-    flex-wrap: wrap;
-}
-
-.contact-filter form {
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-}
-
-.contact-sort {
+    margin-inline: auto;
     margin-block-start: 1em;
-    background-color: $clr1bg;
-    padding-inline-start: 12px;
-    text-align: center;
+    gap: 20px;
+    padding: 20px;
+    min-width: 50%;
 
-    .contact-sort-from {
-        padding: 1em;
-        justify-content: center;
 
-        select {
-            background-color: $clr1;
-            width: 7em;
-            border-radius: 2em;
-            margin-inline-end: 7px;
-        }
-
-    }
+    
 }
+
+
+

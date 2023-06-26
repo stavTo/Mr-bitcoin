@@ -10,7 +10,9 @@
                     <RouterLink :to="`/contact/edit/${contact._id}`">
                         <button class="btn">Edit</button>
                     </RouterLink>
-                    <button class="btn" @click="onRemoveContact(contact._id)">x</button>
+                    <button class="btn" @click="onRemoveContact(contact._id)">
+                        <font-awesome-icon icon="fa-solid fa-trash" />
+                    </button>
                 </section>
             </li>
         </TransitionGroup>

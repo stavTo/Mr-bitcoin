@@ -16,7 +16,7 @@ export default {
     <main class="main-content">
         <RouterView />
     </main>
-    <AppFooter />
+    <!-- <AppFooter /> -->
 </template>
 
 <style scoped>

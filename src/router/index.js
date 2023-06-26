@@ -4,11 +4,17 @@ import ContactIndex from '../pages/ContactIndex.vue'
 import ContactDetails from '../pages/ContactDetails.vue'
 import ContactEdit from '../pages/ContactEdit.vue'
 import BitcoinStats from '../pages/BitcoinStats.vue'
+import LoginSignup from '../pages/LoginSignup.vue'
 const routerOptions = {
     history: createWebHashHistory(import.meta.env.BASE_URL),
     routes: [
         {
             path: '/',
+            name: 'signup',
+            component: LoginSignup,
+        },
+        {
+            path: '/home',
             name: 'home',
             component: HomeView,
         },
