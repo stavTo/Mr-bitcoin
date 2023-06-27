@@ -24,16 +24,17 @@
             </div>
         </div>
 
-        <div class="transaction-list-container">
+        <div v-if="loggedinuser.transactions.length" class="transaction-list-container">
             <TransactionList />
-        </div>
+            </div>
     </main>
 </template>
 
 <script>
 
 import { bitcoinService } from '../services/bitcoin.service'
-import TransactionList  from '../cmps/TransactionList.vue'
+import TransactionList from '../cmps/TransactionList.vue'
+import { userService } from '../services/user.service'
 
 export default {
     data() {
@@ -41,12 +42,14 @@ export default {
             info: {
                 exchangeRate: null,
             },
-            formattedPercentage: "<0.10%"
+            formattedPercentage: "<0.10%",
+            loggedinuser: null
         }
     },
 
     async created() {
         try {
+            this.loggedinuser = userService.getLoggedinUser()
             this.info.exchangeRate = await bitcoinService.getRate()
         } catch (err) {
             throw err

@@ -5,10 +5,11 @@
     background-color: $clr1bg;
     padding-inline-start: 12px;
     position: relative;
+    height: calc(100vh - em(80px));
 
     .transfer-container {
         width: 500px;
-        margin-block-start: 2em;
+        margin-block-start: 4em;
         display: flex;
         flex-direction: column;
         justify-content: center;

@@ -18,6 +18,7 @@
 <script>
 import { contactService } from '@/services/contact.service.js'
 import { userService } from '../services/user.service.js'
+import { showErrorMsg, showSuccessMsg } from '../services/eventBus.service'
 
 export default {
     data() {
@@ -31,14 +32,20 @@ export default {
         this.contact = await contactService.get(contactId)
     },
     methods: {
-        onTransfer() {
+        async onTransfer() {
             const transaction = {
                 amount: this.amount,
                 at: Date.now(),
                 to: this.contact.name,
                 toId: this.contact._id
             }
-            userService.transferBitcoin(transaction)
+            try {
+                await userService.transferBitcoin(transaction)
+                this.amount = ''
+                showSuccessMsg('Transfer completed')
+            } catch {
+                showErrorMsg('Transfer failed')
+            }
         }
     }
 }

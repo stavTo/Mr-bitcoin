@@ -32,11 +32,11 @@ async function logout() {
     return sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN)
 }
 
-function get(userId) {
+async function get(userId) {
     return storageService.get(STORAGE_KEY, userId)
 }
 
-function save(user) {
+async function save(user) {
     if (user._id) {
         return storageService.put(STORAGE_KEY, user)
     } else {
@@ -68,11 +68,16 @@ function _setLoggedinUser({ _id, username, balance, transactions }) {
     return userToSave
 }
 
-function transferBitcoin(transaction) {
-    transaction.at = new Date(transaction.at).toLocaleDateString()
-    const user = getLoggedinUser()
-    user.balance -= transaction.amount
-    user.transactions.push(transaction)
-    _setLoggedinUser(user)
-    save(user)
+async function transferBitcoin(transaction) {
+    try {
+        transaction.at = new Date(transaction.at).toLocaleDateString()
+        const user = getLoggedinUser()
+        user.balance -= transaction.amount
+        user.transactions.push(transaction)
+        _setLoggedinUser(user)
+        await save(user)
+    } catch(err) {
+        console.log('err',err)
+        
+    }
 }
